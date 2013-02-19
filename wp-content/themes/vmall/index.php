@@ -79,8 +79,9 @@ get_header(); ?>
 
 					$display = 'grid' ;
 				}
-				?>
-				<?php mp_display_products('post_type=product', $display) ; ?>
+				
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				mp_display_products(array('post_type' => 'product', 'paged' => $paged), $display) ; ?>
 
 				<div class="clear index-space"></div>
 			</div><!-- #content -->

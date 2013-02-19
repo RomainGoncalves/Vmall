@@ -933,13 +933,14 @@ class Simple_Pagination {
         $link = str_replace('%#%', $page, $link);
         $link = str_replace('page/1/','', $link);
         $link = str_replace('?paged=1','', $link);
-        
+        $link = str_replace('/store/products','', $link);//Added Manualy
+        $link = str_replace('/p','/store/products/p', $link);//Added Manually
+        	
         if ( $this->add_args )
         	$link = add_query_arg( $this->add_args, $link );
 		
 		if( $this->add_fragment )
 			$link .= $this->add_fragment;
-			
         return str_replace(' ','+', $link);
 	}
 	

@@ -348,7 +348,13 @@ function mp_test_query($query = ''){
 }
 function mp_display_products($query = '', $display){ 
 
-	$new_query = new WP_Query($query) ;
+	//$new_query_wp = new WP_Query($query) ;
+	$new_query = query_posts($query) ;
+
+//var_dump($new_query_WP) ;
+//var_dump($new_query) ;
+
+	wp_simple_pagination(array('base' => 'store/products'));	
 
 	$i = 1 ;
 
@@ -359,7 +365,7 @@ function mp_display_products($query = '', $display){
 	if ( $new_query != '' ) : ?>
 
 		<?php /* Start the Loop */ ?>
-		<?php foreach ($new_query->posts as $post) {
+		<?php foreach ($new_query as $post) {
 		
 				$sale_price = get_post_meta($post->ID, 'mp_sale_price', true) ;
 				$sale_price = $sale_price[0] ;
@@ -489,8 +495,7 @@ function mp_display_products($query = '', $display){
 			
 			if($i == 4){ $i = 1 ; }
 			
-			?>
-			
+			?>	
 		<?php } 
 			if($display == 'row'){
 			echo '</table>' ;

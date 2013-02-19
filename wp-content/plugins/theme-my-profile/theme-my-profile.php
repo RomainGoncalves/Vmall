@@ -8,7 +8,7 @@ Author: Jeff Farthing
 Author URI: http://www.jfarthing.com
 Text Domain: theme-my-profile
 */
-
+//require_once(site_url($path = '/', $scheme = null).'wp-admin/includes/misc.php') ;
 
 if ( !class_exists( 'Theme_My_Profile' ) ) {
     class Theme_My_Profile {

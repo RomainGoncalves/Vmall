@@ -129,3 +129,16 @@ function mytheme_comment($comment, $args, $depth) {
     <?php endif; ?>
 <?php
 }
+
+function remove_page_from_query_string($query_string)
+{
+if ($query_string['name'] == 'page' && isset($query_string['page'])) {
+unset($query_string['name']);
+// 'page' in the query_string looks like '/2', so i'm spliting it out
+list($delim, $page_index) = split('/', $query_string['page']);
+$query_string['paged'] = $page_index;
+}
+return $query_string;
+}
+// I will kill you if you remove this. I died two days for this line
+add_filter('request', 'remove_page_from_query_string');
