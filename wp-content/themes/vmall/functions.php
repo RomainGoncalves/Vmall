@@ -5,7 +5,7 @@
 if(!is_admin()){
 
 	//Reset
-	wp_enqueue_style('css-reset', 'http://yui.yahooapis.com/3.5.0/build/cssreset/cssreset-min.css') ;
+	wp_enqueue_style('css-reset', get_template_directory_uri().'/css/reset.css') ;
   wp_enqueue_style('css-nivo-slider', get_template_directory_uri().'/js/nivo-slider/nivo-slider.css', 'css-style') ;
 	//Our stylesheet
   wp_enqueue_style('css-style', get_template_directory_uri().'/style.css', 'css-reset') ;
