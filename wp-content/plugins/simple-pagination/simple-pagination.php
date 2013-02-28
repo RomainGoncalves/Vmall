@@ -933,8 +933,26 @@ class Simple_Pagination {
         $link = str_replace('%#%', $page, $link);
         $link = str_replace('page/1/','', $link);
         $link = str_replace('?paged=1','', $link);
-        $link = str_replace('/store/products','', $link);//Added Manualy
-        $link = str_replace('/p','/store/products/p', $link);//Added Manually
+
+        /*if((home_url().'/' == 'http://'.$_SERVER["HTTP_HOST"]. $_SERVER["REQUEST_URI"]) || $wp_query->query_vars['product_category']){
+        	$link = str_replace('/store/products','', $link);//Added Manualy
+        	$link = str_replace('/p','/store/products/p', $link);//Added Manually
+        }
+        	if(($wp_query->query_vars['product_category'] == null && $_SERVER["REQUEST_URI"] != '/') && !(home_url().'/' == 'http://'.$_SERVER["HTTP_HOST"]. $_SERVER["REQUEST_URI"]) ){
+        var_dump($wp_query->query_vars['product_category'] == null && $_SERVER["REQUEST_URI"] != '/') ;
+        echo '<br /><br />';
+        var_dump($_SERVER["REQUEST_URI"]) ;
+        		$link = str_replace('/store/products','', $link);//Added Manualy
+        	}
+
+        /*
+        $link = str_replace('/category/featured/','/store/products/category/featured', $link);//Added Manually
+        $link = str_replace('/category/featured/store/products','/store/products/category/featured', $link);//Added Manually - For categories*/
+        
+        //http://www.vmall-wp.dev/category/featured/
+        //http://www.vmall-wp.dev/store/products/category/featured/
+        //http://www.vmall-wp.dev/store/products/category/featured/page/2/
+        //http://www.vmall-wp.dev/category/featured/store/products/page/3/
         	
         if ( $this->add_args )
         	$link = add_query_arg( $this->add_args, $link );

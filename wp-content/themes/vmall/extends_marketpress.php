@@ -502,7 +502,11 @@ function mp_display_products($query = '', $display){
 		}
 		?>
 	<?php else : ?>
-	<?php endif;
+	<?php endif; ?>
+
+	<div class="clear index-space"></div>
+	<?php
+	wp_simple_pagination(array('base' => 'store/products'));
 }
 function mp_display_products_list($query, $admin){//For Edit Product page
 			
