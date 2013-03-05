@@ -56,16 +56,18 @@ get_header(); ?>
 
 
 				//now if it's a normal page
-				else{
-					//while ( have_posts() ) : the_post(); ?>
+				else{ ?>
 
 						<h2 class="page-title"><?php the_title() ; ?></h2>
 						<?php 
-						if($wp_query->query_vars['taxonomy'] == '') { ?>
+						if($wp_query->query_vars['taxonomy'] == '') {
+					while ( have_posts() ) : the_post(); ?>
 
 							<div class="page-content"><?php the_content() ; ?></div>
 
-						<?php }
+						<?php 
+							endwhile; // end of the loop
+						}
 						else{ ?>
 
 						<div class="page-content-category">
@@ -97,7 +99,6 @@ get_header(); ?>
 
 								<?php }
 
-							//endwhile; // end of the loop
 							
 						}//end else
 						?>
