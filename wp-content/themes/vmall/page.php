@@ -57,7 +57,7 @@ get_header(); ?>
 
 				//now if it's a normal page
 				else{
-					while ( have_posts() ) : the_post(); ?>
+					//while ( have_posts() ) : the_post(); ?>
 
 						<h2 class="page-title"><?php the_title() ; ?></h2>
 						<?php 
@@ -66,11 +66,7 @@ get_header(); ?>
 							<div class="page-content"><?php the_content() ; ?></div>
 
 						<?php }
-
-
-					endwhile; // end of the loop
-
-						if($wp_query->query_vars['taxonomy'] != ''){ ?>
+						else{ ?>
 
 						<div class="page-content-category">
 							
@@ -91,7 +87,7 @@ get_header(); ?>
 
 								$display = 'grid' ;
 							}
-
+							
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 							mp_display_products(array('post_type' => 'product', 'product_category' => $wp_query->query_vars['product_category'], 'paged' => $paged), $display) ; ?>
 
@@ -100,6 +96,8 @@ get_header(); ?>
 						</div>
 
 								<?php }
+
+							//endwhile; // end of the loop
 							
 						}//end else
 						?>
